@@ -4,4 +4,18 @@ services:
     build: .
     ports:
       - "5000:5000"
+    depends_on:
+      - redis
+    volumes:
+      - .:/atlan-challenge
+  redis:
+    image: "redis:alpine"
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redisdata:/data
+volumes:
+  redisdata:
+
+
+
   
